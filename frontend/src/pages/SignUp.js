@@ -6,6 +6,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import imageTobase64 from '../helpers/imageTobase64';
 import SummaryApi from '../common';
 import { toast } from 'react-toastify';
+import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
+import { jwtDecode } from 'jwt-decode';
 
 const SignUp = () => {
   const [showPassword,setShowPassword] = useState(false)
@@ -73,6 +75,45 @@ const SignUp = () => {
         toast.error("Please check password and confirm password")
       }
 
+  }
+
+  function generateRandomString(length = 8) {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+    for (let i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    return result;
+  }
+
+  async function onSuccess(params)
+  {
+     let credential = jwtDecode(params.credential)
+     console.log(credential) 
+    let {name,email,picture} = credential 
+
+    let password = generateRandomString()
+
+    const dataResponse = await fetch(SummaryApi.signUP.url,{
+        method : SummaryApi.signUP.method,
+        headers : {
+            "content-type" : "application/json"
+        },
+        body : JSON.stringify({email:email , name:name , profilePic:picture , password:password , confirmPassword:password })
+      })
+
+      const dataApi = await dataResponse.json()
+
+      console.log(dataApi)
+
+      if(dataApi.success){
+        toast.success(dataApi.message)
+        navigate("/login")
+      }
+
+      if(dataApi.error){
+        toast.error(dataApi.message)
+      }
   }
 
   return (
@@ -182,9 +223,17 @@ const SignUp = () => {
 
                     </form>
 
+                    
+                    <br/>
+
+                    <center>
+                        <GoogleOAuthProvider clientId='413200676445-t4na10e4c6nk28lfmbdp7i4rcfsfu80h.apps.googleusercontent.com'>
+                            <GoogleLogin onSuccess={onSuccess}/>
+                        </GoogleOAuthProvider>
+                    </center>
+
                     <p className='my-5'>Already have account ? <Link to={"/login"} className=' text-red-600 hover:text-red-700 hover:underline'>Login</Link></p>
             </div>
-
 
         </div>
     </section>

@@ -6,6 +6,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import SummaryApi from '../common';
 import { toast } from 'react-toastify';
 import Context from '../context';
+import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
+import { jwtDecode } from 'jwt-decode';
 
 const Login = () => {
     const [showPassword,setShowPassword] = useState(false)
@@ -38,6 +40,34 @@ const Login = () => {
                 "content-type" : "application/json"
             },
             body : JSON.stringify(data)
+        })
+
+        const dataApi = await dataResponse.json()
+
+        if(dataApi.success){
+            toast.success(dataApi.message)
+            navigate('/')
+            fetchUserDetails()
+            fetchUserAddToCart()
+        }
+
+        if(dataApi.error){
+            toast.error(dataApi.message)
+        }
+
+    }
+
+    async function onSuccess(params)
+    {
+        let credential = jwtDecode(params.credential)
+
+        const dataResponse = await fetch(SummaryApi.signIn.url,{
+            method : SummaryApi.signIn.method,
+            credentials : 'include',
+            headers : {
+                "content-type" : "application/json"
+            },
+            body : JSON.stringify({email:credential.email , authType:'google'})
         })
 
         const dataApi = await dataResponse.json()
@@ -112,6 +142,14 @@ const Login = () => {
                         <button className='bg-red-600 hover:bg-red-700 text-white px-6 py-2 w-full max-w-[150px] rounded-full hover:scale-110 transition-all mx-auto block mt-6'>Login</button>
 
                     </form>
+
+                    <br/>
+
+                    <center>
+                        <GoogleOAuthProvider clientId='413200676445-t4na10e4c6nk28lfmbdp7i4rcfsfu80h.apps.googleusercontent.com'>
+                            <GoogleLogin onSuccess={onSuccess}/>
+                        </GoogleOAuthProvider>
+                    </center>
 
                     <p className='my-5'>Don't have account ? <Link to={"/sign-up"} className=' text-red-600 hover:text-red-700 hover:underline'>Sign up</Link></p>
             </div>

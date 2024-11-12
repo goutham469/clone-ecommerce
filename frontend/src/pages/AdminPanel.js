@@ -9,11 +9,11 @@ const AdminPanel = () => {
     const navigate = useNavigate()
 
 
-    useEffect(()=>{
-        if(user?.role !== ROLE.ADMIN){
-            navigate("/")
-        }
-    },[user])
+    // useEffect(()=>{
+    //     if(user?.role !== ROLE.ADMIN){
+    //         navigate("/")
+    //     }
+    // },[user])+
 
   return (
     <div className='min-h-[calc(100vh-120px)] md:flex hidden'>

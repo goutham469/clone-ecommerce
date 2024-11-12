@@ -1,0 +1,23 @@
+.image-inner{
+    width: 80vw;
+    height: 450px;
+
+    border-radius: 10px;
+}
+.banner-imp-navbar{
+    
+    font-weight: 700;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    color: #454545;
+}
+.banner-imp-on-hover-content{
+    position: absolute;
+    background-color: var(--background-color);
+    width: 180px;
+    border-radius: 10px;
+
+    text-align: left;
+    padding: 10px;
+}

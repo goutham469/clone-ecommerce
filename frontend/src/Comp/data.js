@@ -1,0 +1,119 @@
+export const data = {
+    bannerText:"Flat 10%off on purchase worth more than 100rs.",
+    bannerData:{
+        header:[
+            {
+                type: "VISUAL TEMPLATES",
+                categories :[
+                                {
+                                    name:'a',
+                                    url:''
+                                },
+                                {
+                                    name:'b',
+                                    url:''
+                                },
+                                {
+                                    name:'c',
+                                    url:''
+                                },
+                                {
+                                    name:'d',
+                                    url:''
+                                }
+                            ]
+            },
+            {
+                type: "GRAPHICS TEMPLATES",
+                categories :[
+                                {
+                                    name:'a',
+                                    url:''
+                                },
+                                {
+                                    name:'b',
+                                    url:''
+                                },
+                                {
+                                    name:'c',
+                                    url:''
+                                },
+                                {
+                                    name:'d',
+                                    url:''
+                                }
+                            ]
+            },
+            {
+                type: "AFTER EFFECTS",
+                categories :[
+                                {
+                                    name:'sanjay',
+                                    url:''
+                                },
+                                {
+                                    name:'b',
+                                    url:''
+                                },
+                                {
+                                    name:'c',
+                                    url:''
+                                },
+                                {
+                                    name:'d',
+                                    url:''
+                                }
+                            ]
+            },
+            {
+                type: "PHOTOSHOP",
+                categories :[
+                                {
+                                    name:'a',
+                                    url:''
+                                },
+                                {
+                                    name:'b',
+                                    url:''
+                                },
+                                {
+                                    name:'c',
+                                    url:''
+                                },
+                                {
+                                    name:'d',
+                                    url:''
+                                }
+                            ]
+            }
+        ],
+        desktop:[
+            {
+                image:'https://raw.githubusercontent.com/goutham469/ecommerce/refs/heads/assets/assets/BANNER%201.png',
+                url:''
+            },
+            {
+                image:'https://raw.githubusercontent.com/goutham469/ecommerce/refs/heads/assets/assets/BANNER%202.png',
+                url:''
+            },
+            {
+                image:'https://raw.githubusercontent.com/goutham469/ecommerce/refs/heads/assets/assets/BANNER%203.png',
+                url:''
+            }
+        ],
+        mobile:[
+            {
+                image:'',
+                url:''
+            },
+            {
+                image:'',
+                url:''
+            },
+            {
+                image:'',
+                url:''
+            }
+        ]
+    }
+}

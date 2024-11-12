@@ -40,6 +40,9 @@ const UploadProduct = ({
     const file = e.target.files[0]
     const uploadImageCloudinary = await uploadImage(file)
 
+    alert(uploadImageCloudinary.url)
+    console.log(uploadImageCloudinary)
+
     setData((preve)=>{
       return{
         ...preve,

@@ -1,0 +1,33 @@
+.banner-display{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+
+    padding: 5px;
+}
+.banner-social-icons-outer{
+    margin-left: 140px;
+    margin-top: 10px;
+}
+.banner-social-icons{
+    padding: 3px;
+    color: var(--secondary-color);
+}
+.banner-social-icon{
+    width: 17px;
+    background-color: #ebebeb;
+    fill: #787878;
+    padding: 3px;
+    border-radius: 5px;
+}
+.banner-text{
+    font-size: 13px;
+    font-weight: 500;
+    margin-top: 5px;
+    position: relative;
+    right: 150px;
+
+    text-transform: uppercase;
+    color: hsl(0, 0%, 47%);
+}
